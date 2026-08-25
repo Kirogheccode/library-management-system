@@ -86,6 +86,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 201.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Add check for createdAt and groupId fields in the response payload.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Frontend requires these fields to display details immediately after creation.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -126,6 +146,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 401 with `AUTH_REQUIRED`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 401 with error code 'UNAUTHORIZED_ACCESS'.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Standardize security error codes according to the new global system guidelines.</td>
     </tr>
   </tbody>
 </table>
@@ -168,6 +208,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 401 with `INVALID_TOKEN`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 401 with a detailed message: 'Token expired or malformed'.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Clarify the token error cause for easier debugging on the client side.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -208,6 +268,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 403.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 403 Forbidden and log a security warning.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Security team requires auditing all unauthorized access attempts.</td>
     </tr>
   </tbody>
 </table>
@@ -250,6 +330,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 400.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 400 Bad Request and explicitly list the invalid field name in the 'details' array.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Helps frontend easily parse the error and display an alert to the user.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -290,6 +390,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 400.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 400 with a specific message about the malformed metadata format.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Improve API Developer Experience (DX) with clearer error messages.</td>
     </tr>
   </tbody>
 </table>
@@ -332,6 +452,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 404 or 409.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Check for an additional 409 Conflict error if the study group name already exists.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Ensure study group names are unique across the system.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -373,6 +513,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 500.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 500 along with a trace ID (if available).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Facilitates faster system log tracing for internal errors.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -387,6 +547,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">`availId: "12"` and metadata/requirements containing surrounding spaces and an empty item.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Invoke `validateCreateStudyGroup` with the valid request.</li><li>Inspect the normalized body and middleware continuation.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">`availId` becomes `12`, metadata is trimmed, empty requirements are removed, `next()` is called once, and no error response is sent.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Middleware calls next() and flags request.body with `isNormalized = true`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Makes it easier to track the preprocessing state of the payload.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -399,6 +579,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">A valid creation request without the `requirements` field.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Remove `requirements` from the valid request.</li><li>Invoke the creation middleware and inspect the request body.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">`requirements` is `[]` and `next()` is called once.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Assign a null value to the requirements array instead of leaving it empty if omitted.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Saves bandwidth and standardizes default values in the database.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -411,6 +611,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">A valid request containing `createdBy: "another-user"`.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Add `createdBy` to the request body.</li><li>Invoke the middleware and inspect the response.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 with `VALIDATION_ERROR`, `Unsupported request field.`, and `details.fields: ["createdBy"]`; `next()` is not called.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Silently drop the invalid field instead of throwing an error.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Requirement change: apply strict pick mechanism instead of throwing errors.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -423,6 +643,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Parameterized values: `0`, `-1`, `1.5`, and `"not-a-number"`.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Set each invalid value as `availId`.</li><li>Invoke the middleware and inspect each response.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Each value returns HTTP 400 with `VALIDATION_ERROR` and `availId must be a positive integer.`; `next()` is not called.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 422 Unprocessable Entity instead of 400.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Standardize HTTP status codes: use 422 for data logic errors.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -435,6 +675,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">`startDate: "01/08/2099"`.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Set the slash-formatted date in the request.</li><li>Invoke the middleware and inspect the response.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 with `VALIDATION_ERROR` and `startDate must use YYYY-MM-DD.`; `next()` is not called.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Accept ISO-8601 format instead of only YYYY-MM-DD.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Support multiple time zones for international students.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -447,6 +707,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Six non-empty requirements: `["1", "2", "3", "4", "5", "6"]`.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Set six requirements in the request.</li><li>Invoke the middleware and inspect the response.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 with `VALIDATION_ERROR` and the five-item limit message; `next()` is not called.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Accept a maximum of 10 requirements instead of 5.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Lecturer feedback requested more conditions for large study groups.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -490,6 +770,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Controller forwards correct parameters to service.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Controller calls the service with a parameter containing the user's IP.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Required for the newly added rate-limiting feature.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -530,6 +830,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Socket event is emitted successfully after service completion.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Socket event is emitted with a payload format including the creator's details.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Frontend needs the creator's name to display a more detailed real-time notification.</td>
     </tr>
   </tbody>
 </table>
@@ -572,6 +892,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 400 with details.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Log validation errors to controller.log before returning the response.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Audit log requirement from the DevOps team.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -612,6 +952,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 500.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Send an alert to the monitoring system (e.g., Sentry) before returning 500.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Ensure the operations team is notified immediately.</td>
     </tr>
   </tbody>
 </table>
@@ -656,6 +1016,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns cleaned up payload.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Trim all special characters (e.g., tabs, newlines) from metadata.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent UI rendering issues when users paste text from Word documents.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -695,6 +1075,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns an array of standard strings.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Coerce requirements to strings and limit each item to 100 characters.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent memory overflow or UI breaking due to excessively long strings.</td>
     </tr>
   </tbody>
 </table>
@@ -736,6 +1136,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with UNAUTHORIZED (401).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Throw an additional `UserNotFoundError` if the ID does not exist in the DB.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent edge cases where an account is physically deleted but the token remains valid.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -775,6 +1195,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with VALIDATION_ERROR (400).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Add stricter XSS vulnerability checks in the study group description.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Mandatory requirement from the periodic security review.</td>
     </tr>
   </tbody>
 </table>
@@ -816,6 +1256,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with VALIDATION_ERROR (400).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Change the error message to 'The number of requirements exceeds the allowed limit'.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Update the error message format based on new localization requirements.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -856,6 +1316,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with NOT_FOUND (404).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return a list of available slots if the availId is invalid.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Improve user friendliness by suggesting options instead of just throwing an error.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -895,6 +1375,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with INVALID_CAPACITY (409).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Verify the validity of the start time (must not be in the past).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent the creation of study groups with invalid historical timestamps.</td>
     </tr>
   </tbody>
 </table>
@@ -938,6 +1438,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with `SLOT_UNAVAILABLE` (409); `findSlotForCreation` receives availability ID, start date, and transaction client; no persistence insert runs.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Throw `CapacityError` if the expected member count exceeds room capacity.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Integrate with the library's facility management system.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -979,6 +1499,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns group detail successfully.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Call transaction.rollback() explicitly in the catch block.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Ensure data integrity at the code level during unexpected failures.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1018,6 +1558,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with SLOT_UNAVAILABLE (409).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Limit each user to creating a maximum of 3 groups per day.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent spamming of fake study groups.</td>
     </tr>
   </tbody>
 </table>
@@ -1059,6 +1619,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with AUTH_USER_NOT_FOUND (401).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Validate an additional condition ensuring the user is not banned.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Integrate with the library management system's penalty feature.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1098,6 +1678,26 @@ Test case IDs use `TC-<SCOPE>-CSG-<SEQUENCE>`, where `TC` means Test Case, `CSG`
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with standard Error instance.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Save the group creation history into the `audit_logs` table after a successful commit.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Support the user activity history retrieval feature.</td>
     </tr>
   </tbody>
 </table>
