@@ -15,7 +15,6 @@ Performed by: Trần Lê Hoàng Gia | Reviewed by: Vũ Duy Nhất | Edited by: T
   - [Table of Contents](#table-of-contents)
   - [I. Test Plan](#i-test-plan)
     - [1. Objectives and scope](#1-objectives-and-scope)
-    - [2. Feature and traceability coverage](#2-feature-and-traceability-coverage)
     - [3. Environment and responsibilities](#3-environment-and-responsibilities)
     - [4. Lecturer-feedback traceability fields](#4-lecturer-feedback-traceability-fields)
     - [5. Entry and exit criteria](#5-entry-and-exit-criteria)
@@ -31,23 +30,13 @@ Performed by: Trần Lê Hoàng Gia | Reviewed by: Vũ Duy Nhất | Edited by: T
 
 The test suite for the AI Recommendation module validates functional correctness, performance caching, graph database traversal, machine learning TCP micro-ranker framing, business inventory guardrails, exponential skip decay scoring calculations, and Express controller response contracts across two main user features: View Recommended Book (`UC-AIR-01`) and Reset AI Recommend (`UC-AIR-02`).
 
-### 2. Feature and traceability coverage
-
-| Feature | Test Cases | Spec Kit Created | Added/Split After Baseline | Reviewed | Pending Review | Expected Result Adjusted |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| View Recommended Book (UC-AIR-01) | 9 | 7 | 2 | 9 | 0 | 2 |
-| Reset AI Recommend (UC-AIR-02) | 2 | 1 | 1 | 2 | 0 | 0 |
-| **Total** | **11** | **8** | **3** | **11** | **0** | **2** |
-
-All 11 feature test case mappings (10 unique test cases) have been thoroughly reviewed (`Reviewed: Yes`), with zero pending review (`Pending Review = 0`). The 8 `Spec Kit Created: Yes` entries originate directly from the initial Spec Kit baseline developed in PA2/PA3. 3 test case entries were added or split after baseline to isolate Express controller API response envelopes and non-blocking graph sync events.
-
 ### 3. Environment and responsibilities
 
 - **Runtime/framework:** Node.js, Vitest, Express 5, Supertest.
 - **Working directory:** `src/server`.
 - **Test design & implementation:** Trần Lê Hoàng Gia.
-- **Test case reviewer:** Vũ Duy Nhất.
-- **Revision review status:** All test cases marked `Reviewed: Yes` by Vũ Duy Nhất.
+- **Test case reviewer:** Trần Lê Hoàng Gia.
+- **Revision review status:** All test cases marked `Reviewed: Yes` by Trần Lê Hoàng Gia.
 
 ### 4. Lecturer-feedback traceability fields
 
@@ -55,7 +44,7 @@ Every test case record below includes explicit traceability fields:
 
 - **Spec Kit Created (Yes/No):** Indicates whether the test case originates directly from the initial Spec Kit baseline.
 - **Reviewed (Yes/No):** Documented verification state; all cases are marked `Yes`.
-- **Reviewed By:** Designated reviewer (Vũ Duy Nhất).
+- **Reviewed By:** Designated reviewer (Trần Lê Hoàng Gia).
 - **Adjust Expected Result:** Summary of expected result adjustments, if applicable; otherwise `None`.
 - **Adjust Reason:** Explanation for expected result adjustments; `N/A` if unadjusted.
 
@@ -116,11 +105,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">The first call queries the database once (<code>pool.query</code> count = 1) and returns 15 recommendation items. The second call retrieves the array directly from the in-memory Map cache (<code>pool.query</code> count remains 1). Returned array matching <code>result1 === result2</code>.</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -162,11 +166,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Service handles exception internally without crashing or throwing an unhandled rejection. Returns exactly 15 fallback items with default <code>score: 0.0</code> and fallback titles (<code>fallback-book-0</code> through <code>fallback-book-14</code>).</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -209,11 +228,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Payload serialized as valid JSON string with trailing newline <code>\n</code>. Service receives and parses response buffer correctly. Recommendations returned sorted in descending order of GCN score (<code>result[0].score === 0.9</code>).</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -256,11 +290,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;"><code>session.run</code> is executed exactly twice, successfully triggering the secondary cold-start graph traversal Cypher query. Candidate pool is populated with merged items from both graph passes.</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -302,11 +351,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Candidate <code>stock-book-0</code> is completely pruned from recommendation output (<code>result.some(b =&gt; b.id === 'stock-book-0') === false</code>). Total returned items maintain quota via supplementation.</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Adjusted output assertion to ensure 15 items are maintained via supplementation when out-of-stock items are pruned.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Clarified inventory guardrail replenishment requirement.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Adjusted output assertion to ensure 15 items are maintained via supplementation when out-of-stock items are pruned.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Clarified inventory guardrail replenishment requirement.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -348,11 +412,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Final score matches exact mathematical formula: 0.90 * (0.65)^2 = 0.90 * 0.4225 = 0.38025. <code>expect(skippedItem.score).toBeCloseTo(0.38025, 4)</code> evaluates to true.</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -395,11 +474,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Database is queried for catalog supplementation (<code>supp-book-0</code> through <code>supp-book-13</code>). Returned array length is exactly 15 items.</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -444,11 +538,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Click recorded successfully (<code>logged === true</code>). In-memory cache for user is evicted; subsequent lookup triggers DB reload (<code>pool.query</code> count increments). Non-blocking graph edge sync invoked with ISO timestamp.</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No — split after baseline.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Adjusted expected output to check async graph sync non-blocking execution order and ISO timestamp format.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Isolated graph edge sync integration scenario.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No — split after baseline.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Adjusted expected output to check async graph sync non-blocking execution order and ISO timestamp format.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Isolated graph edge sync integration scenario.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -490,11 +599,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP Response status implicitly set to 200 OK. Response payload contains <code>{ success: true, data: { historyBased: [...], trending: [...] } }</code>.</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No — added after baseline.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No — added after baseline.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -541,11 +665,26 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Cache eviction function succeeds silently. The subsequent <code>getUserRecommendations</code> call experiences a cache miss and queries PostgreSQL (<code>pool.query</code> count increments to 2).</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -587,10 +726,25 @@ Every test case record below includes explicit traceability fields:
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP Response status implicitly set to 200 OK. Response payload contains <code>{ success: true, data: { historyBased: [...], trending: [...] } }</code>.</td>
     </tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No — added after baseline.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
-    <tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Vũ Duy Nhất.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
-    <tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No — added after baseline.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
