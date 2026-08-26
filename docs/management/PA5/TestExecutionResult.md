@@ -5,7 +5,7 @@
     Group ID: 03
     Group Name: AmeThyst
     Assignment: PA5-2026
-    Version: 1.6
+    Version: 1.7
 
 Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 
@@ -21,6 +21,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 | 16/08/2026 | 1.4 | Update Execution Result for more test in Create Study Group | Nguyễn Lê Hoàng Khải |
 | 21/08/2026 | 1.5 | Test Execution Result for AI Recommendation | Trần Lê Hoàng Gia |
 | 21/08/2026 | 1.6 | Combine all and Edit | Vũ Duy Nhất |
+| 21/08/2026 | 1.7 | Update more test cases in Register, Google OAuth, Verify Email, Resend Verification | Phan Lê Anh Minh |
 
 ## Table of Contents
 
@@ -93,7 +94,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Pending data remained committed after the verification mailer failed. Linked bug: BUG-AUTH-01.</td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Pending data remained committed after the verification mailer failed. (Linked bug: BUG-01)</td></tr>
   </tbody>
 </table>
 
@@ -173,6 +174,33 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </tbody>
 </table>
 
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-INT-REG-003</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">An active pending registration was hidden behind the generic response and was neither replaced nor re-mailed.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-INT-REG-004</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-004</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Invalid email/password/username input returned HTTP 400 VALIDATION_ERROR before persistence.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-INT-REG-005</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-005</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #fee2e2; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The first request returned 502, but its active pending row blocked the retry; the mailer ran once instead of twice and no fresh token was issued. (Linked bug: BUG-02)</td></tr>
+</tbody></table>
+
 ## II. Google OAuth
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
@@ -212,6 +240,33 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The returning Google user was reused and the password-account collision was refused safely.</td></tr>
   </tbody>
 </table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-CFG-GA-003</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A first-time profile without photos was inserted with a null avatar.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-CFG-GA-004</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-004</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A password-account collision was refused with the expected Passport information result.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-CFG-GA-005</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-005</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A profile without a verified email was refused before database access.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
@@ -289,6 +344,15 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </tbody>
 </table>
 
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-INT-GA-003</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-GA-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A refused authentication redirected to client login and created no session.</td></tr>
+</tbody></table>
+
 ## III. Resend Verification
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
@@ -344,7 +408,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Replacement token and TTL were committed before failed mail delivery, so the previous values were not preserved. Linked bug: BUG-AUTH-02.</td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Replacement token and TTL were committed before failed mail delivery, so the previous values were not preserved. (Linked bug: BUG-03).</td></tr>
   </tbody>
 </table>
 
@@ -387,6 +451,15 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 </table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-CTL-RV-003</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-RV-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A missing email returned HTTP 400 without service invocation.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
@@ -423,6 +496,24 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The no-pending API request returned HTTP 200 without calling the mailer.</td></tr>
   </tbody>
 </table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-INT-RV-003</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-RV-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #fee2e2; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The request eventually returned 502 and restored old state, but the persisted token at the delivery boundary was already the undelivered replacement. (Linked bug: BUG-04)</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-INT-RV-004</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-RV-004</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #fee2e2; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">While the replacement delivery was pending and later failed, verification with the previously valid token returned HTTP 400 instead of 200.(Linked bug: BUG-05)</td></tr>
+</tbody></table>
 
 ## IV. Verify Email
 
@@ -522,6 +613,15 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 </table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-CTL-VE-003</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-VE-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The expiration error mapped independently to HTTP 410.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
@@ -558,6 +658,24 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The API returned HTTP 400 with <code>{ error: 'Verification token is required' }</code>.</td></tr>
   </tbody>
 </table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-INT-VE-003</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-VE-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A non-existent token returned HTTP 400 and did not create a session.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Execution: TC-INT-VE-004</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-VE-004</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
+<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The first verification succeeded; reuse of the consumed token returned HTTP 400 and no second session was created.</td></tr>
+</tbody></table>
 
 ## V. Reserve Book
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
@@ -775,11 +893,11 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-01; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-06; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
-      <td style="vertical-align: top;">The reservation was accepted even though `borrow_num` was at the maximum limit; `BORROW_LIMIT_EXCEEDED` was not returned because the borrow-limit check was missing in `createReservation`. After the fix (BUG-01), the case returns HTTP 400 `BORROW_LIMIT_EXCEEDED` with rollback.</td>
+      <td style="vertical-align: top;">The reservation was accepted even though `borrow_num` was at the maximum limit; `BORROW_LIMIT_EXCEEDED` was not returned because the borrow-limit check was missing in `createReservation`. After the fix (BUG-06), the case returns HTTP 400 `BORROW_LIMIT_EXCEEDED` with rollback.</td>
     </tr>
   </tbody>
 </table>
@@ -946,11 +1064,11 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-02; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-07; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
-      <td style="vertical-align: top;">A PIN collision (SQLSTATE 23505) crashed the endpoint with an uncaught database error instead of retrying with a new candidate; the retry loop was missing. After the fix (BUG-02), the endpoint returns HTTP 500 `PIN_GENERATION_FAILED` after 3 attempts without crashing.</td>
+      <td style="vertical-align: top;">A PIN collision (SQLSTATE 23505) crashed the endpoint with an uncaught database error instead of retrying with a new candidate; the retry loop was missing. After the fix (BUG-07), the endpoint returns HTTP 500 `PIN_GENERATION_FAILED` after 3 attempts without crashing.</td>
     </tr>
   </tbody>
 </table>
@@ -1254,11 +1372,11 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-03; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-08; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
-      <td style="vertical-align: top;">A PIN whose reservation belonged to branch 2 was accepted by a librarian at branch 1; `WRONG_BRANCH` was not returned because the branch check was missing in `verifyPin`. After the fix (BUG-03), HTTP 403 `WRONG_BRANCH` is returned for cross-branch PINs.</td>
+      <td style="vertical-align: top;">A PIN whose reservation belonged to branch 2 was accepted by a librarian at branch 1; `WRONG_BRANCH` was not returned because the branch check was missing in `verifyPin`. After the fix (BUG-08), HTTP 403 `WRONG_BRANCH` is returned for cross-branch PINs.</td>
     </tr>
   </tbody>
 </table>
@@ -1814,11 +1932,11 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-04; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-09; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
-      <td style="vertical-align: top;">Confirming the return of a lost book did not record the 2× price penalty (`penaltyAmount` stayed 0, no `book_penalty` row); the lost-book branch was missing in `confirmReturn`. After the fix (BUG-04), `penaltyAmount = 100` (2 × 50) with `issue = "lost"` and a `book_penalty` row inserted.</td>
+      <td style="vertical-align: top;">Confirming the return of a lost book did not record the 2× price penalty (`penaltyAmount` stayed 0, no `book_penalty` row); the lost-book branch was missing in `confirmReturn`. After the fix (BUG-09), `penaltyAmount = 100` (2 × 50) with `issue = "lost"` and a `book_penalty` row inserted.</td>
     </tr>
   </tbody>
 </table>
@@ -1898,11 +2016,11 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-05; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-10; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
-      <td style="vertical-align: top;">After a successful return the `pin`/`expired_at` values were left in `borrow_book`, so the PIN could be reused; the clearing step was missing in `confirmReturn`. After the fix (BUG-05), `pin` and `expired_at` are set to NULL on return.</td>
+      <td style="vertical-align: top;">After a successful return the `pin`/`expired_at` values were left in `borrow_book`, so the PIN could be reused; the clearing step was missing in `confirmReturn`. After the fix (BUG-10), `pin` and `expired_at` are set to NULL on return.</td>
     </tr>
   </tbody>
 </table>

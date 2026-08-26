@@ -5,7 +5,7 @@
     Group ID: 03
     Group Name: AmeThyst
     Assignment: PA5-2026
-    Version: 1.4
+    Version: 1.5
 
 Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 
@@ -18,6 +18,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 | 16/08/2026 | 1.2 | Bug Report for Reserve Book and Verify PIN | Nguyễn Nhựt Huy |
 | 21/08/2026 | 1.3 | Update status for bugs in Register and Resend Verification | Phan Lê Anh Minh |
 | 21/08/2026 | 1.4 | Combine all and Edit | Vũ Duy Nhất |
+| 23/08/2026 | 1.5 | Update Bug Report for Register and Resend Verification | Phan Lê Anh Minh |
 
 
 ## Table of Contents
@@ -33,39 +34,36 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     - [2.4 Verify PIN](#24-verify-pin)
 
 ## I. Test Summary
-Execution covered the full set of **118 test cases** defined in the **Test Plan and Test Cases** document, spanning the Middleware, API/Integration, Controller, and Service layers across all eight implemented features (Register, Google OAuth, Resend Verification, Verify Email, Reserve Book, Verify PIN, Create Study Group, AI Recommendation). Testing combined the automated Vitest suite (`npm test` / feature-specific scripts, from `src/server`) with mocked PostgreSQL, mail, and session dependencies, cross-checked by manual functional testing through the web client and API. Execution ran between **2026-08-13** and **2026-08-21**, with the first seven features executed by 2026-08-16 and AI Recommendation executed separately on 2026-08-21.
+Execution covered the full set of **131 test cases** defined in the **Test Plan and Test Cases** document, spanning the Middleware, API/Integration, Controller, and Service layers across all eight implemented features (Register, Google OAuth, Resend Verification, Verify Email, Reserve Book, Verify PIN, Create Study Group, AI Recommendation). Testing combined the automated Vitest suite (`npm test` / feature-specific scripts, from `src/server`) with mocked PostgreSQL, mail, and session dependencies, cross-checked by manual functional testing through the web client and API. Execution ran between **2026-08-13** and **2026-08-21**.
 
 **Overall statistics:**
 
 | Metric | Count |
 | :--- | :--- |
 | Number of features tested | 8 |
-| Total test cases executed | 118 |
-| Passed (initial run) | 111 |
-| Failed (initial run) | 7 |
-| Pass rate (initial run) | 94.1% |
-| Defects logged | 7 (BUG-01→05, BUG-AUTH-01→02) |
-| Defects fixed & re-verified | 7 (BUG-01→05, BUG-AUTH-01→02) |
+| Total test cases executed | 131 |
+| Passed (initial run) | 124 |
+| Failed (initial run) | 10 |
+| Pass rate (initial run) | 94.7% |
+| Defects logged | 10 (BUG-01→10) |
+| Defects fixed & re-verified | 10 (BUG-01→10) |
 | Defects still open | 0 |
-| Effective passing (after 2026-08-21 regression) | 118 / 118 |
+| Effective passing (after 2026-08-23 regression) | 131 / 131 |
 
 **Results by feature:**
 
-| Feature | Test Cases | Passed | Failed | Linked Bug(s) | Execution Date(s) |
-| :--- | :---: | :---: | :---: | :--- | :--- |
-| Register | 7 | 6 | 1 | BUG-AUTH-01 (Fixed) | 2026-08-14 |
-| Google OAuth | 6 | 6 | 0 | — | 2026-08-14 |
-| Resend Verification | 7 | 6 | 1 | BUG-AUTH-02 (Fixed) | 2026-08-14 |
-| Verify Email | 7 | 7 | 0 | — | 2026-08-14 |
-| Reserve Book | 10 | 9 | 1 | BUG-01 (Fixed) | 2026-08-13 – 2026-08-16 |
-| Verify PIN | 40 | 36 | 4 | BUG-02, BUG-03, BUG-04, BUG-05 (Fixed) | 2026-08-13 – 2026-08-16 |
+| Feature | Test Cases | Passed | Failed | Linked Bug(s) | Execution Date(s) | Fixed All
+| :--- | :---: | :---: | :---: | :--- | :--- | :---: |
+| Register | 10 | 8 | 2 | BUG-01, BUG-02 | 2026-08-14 - 2026-08-21 | Yes |
+| Google OAuth | 10 | 10 | 0 | — | 2026-08-14 - 2026-08-21 | — |
+| Resend Verification | 10 | 7 | 3 | BUG-03, BUG-04, BUG-05 | 2026-08-14 - 2026-08-21 | Yes |
+| Verify Email | 10 | 10 | 0 | — | 2026-08-14 - 2026-08-21 | — |
+| Reserve Book | 10 | 9 | 1 | BUG-01 | 2026-08-13 – 2026-08-16 | Yes |
+| Verify PIN | 40 | 36 | 4 | BUG-02, BUG-03, BUG-04, BUG-05 | 2026-08-13 – 2026-08-16 | Yes |
 | Create Study Group | 30 | 30 | 0 | — | 2026-08-16 |
 | AI Recommendation | 11 | 11 | 0 | — | 2026-08-21 |
-| **Total** | **118** | **111** | **7** | **7 defects** | **2026-08-13 – 2026-08-21** |
+| **Total** | **118** | **111** | **7** | **10 defects** | **2026-08-13 – 2026-08-21** | **Yes** |
 
-*Note: after the 2026-08-16 regression, the 5 Reserve Book / Verify PIN failures (BUG-01 → BUG-05) re-verified as Pass, bringing effective passing to 116/118. The 2 Register / Resend Verification failures (BUG-AUTH-01, BUG-AUTH-02) remain open and unresolved as of this version.*
-
-*Note: after the 2026-08-21 regression, the 2 Register / Resend Verification failures (BUG-AUTH-01 → BUG-AUTH-02) re-verified as Pass, bringing effective passing to 118/118.*
 ## II. Bug Reports
 
 ### 2.1 Register
@@ -74,14 +72,14 @@ Execution covered the full set of **118 test cases** defined in the **Test Plan 
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Bug Report: BUG-AUTH-01
+        Bug Report: BUG-01
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td>
-      <td style="vertical-align: top;"><strong>BUG-AUTH-01</strong></td>
+      <td style="vertical-align: top;"><strong>BUG-01</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td><td style="vertical-align: top;">TC-SRV-REG-003</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Initial registration commits pending data before verification email delivery succeeds.</td></tr>
@@ -103,20 +101,33 @@ Execution covered the full set of **118 test cases** defined in the **Test Plan 
   </tbody>
 </table>
 
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Bug Report: BUG-02</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td><td><strong>BUG-02</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td><td>TC-INT-REG-005</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td>After an initial registration email fails, an immediate retry is treated as an active pending registration and does not create or deliver a fresh token.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Steps to Reproduce</td><td><ol><li>POST a valid unused registration and make its mail delivery reject.</li><li>Confirm the first request returns HTTP 502.</li><li>Immediately POST the same registration again.</li><li>Inspect the second response, token state, and mailer call count.</li></ol></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Result</td><td>The retry creates a fresh pending token and performs a second delivery attempt.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td>The retry returns the generic HTTP 201 response, but no fresh token is issued and the mailer runs only once across both requests.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Severity</td><td>High</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td>Fixed (re-verified 2026-08-23)</td></tr>
+</tbody></table>
+
 ### 2.2 Resend Verification
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Bug Report: BUG-AUTH-02
+        Bug Report: BUG-03
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td>
-      <td style="vertical-align: top;"><strong>BUG-AUTH-02</strong></td>
+      <td style="vertical-align: top;"><strong>BUG-03</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td><td style="vertical-align: top;">TC-SRV-RV-003</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Resend verification replaces the previous token before successful email delivery is confirmed.</td></tr>
@@ -138,20 +149,46 @@ Execution covered the full set of **118 test cases** defined in the **Test Plan 
   </tbody>
 </table>
 
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Bug Report: BUG-04</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td><td><strong>BUG-04</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td><td>TC-INT-RV-003</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td>The resend API exposes the undelivered replacement token as persisted state while email delivery is in progress.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Steps to Reproduce</td><td><ol><li>Start a resend request for an active pending registration.</li><li>Hold the mail delivery promise unresolved.</li><li>Inspect persisted token and TTL at the delivery boundary.</li><li>Reject delivery and inspect the HTTP response and final state.</li></ol></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Result</td><td>Persisted state remains on the previous token throughout delivery; a failed delivery returns HTTP 502 without changing it.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td>The request eventually returns HTTP 502 and restores the old state, but the persisted token at the delivery boundary is the undelivered replacement.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Severity</td><td>High</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td>Fixed (re-verified 2026-08-23)</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Bug Report: BUG-05</th></tr></thead>
+<tbody>
+<tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td><td><strong>BUG-05</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td><td>TC-INT-RV-004</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td>The previously valid verification token becomes unusable while a resend delivery is pending, even when that replacement delivery later fails.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Steps to Reproduce</td><td><ol><li>Create a pending registration with an active token.</li><li>Start resend and hold replacement delivery unresolved.</li><li>Submit the previous token to <code>/auth/verify-email</code>.</li><li>Reject resend delivery and inspect both responses and final state.</li></ol></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Result</td><td>The previous token remains verifiable while resend is in progress; verification returns HTTP 200 and failed resend does not invalidate it.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td>Verification with the previous token returns HTTP 400 while resend is pending; the resend later returns HTTP 502 and restores the old token.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Severity</td><td>High</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td>Fixed (re-verified 2026-08-23)</td></tr>
+</tbody></table>
+
 ### 2.3 Reserve Book
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Bug Report: BUG-01
+        Bug Report: BUG-06
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td>
-      <td style="vertical-align: top;"><strong>BUG-01</strong></td>
+      <td style="vertical-align: top;"><strong>BUG-06</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td>
@@ -196,14 +233,14 @@ Execution covered the full set of **118 test cases** defined in the **Test Plan 
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Bug Report: BUG-02
+        Bug Report: BUG-07
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td>
-      <td style="vertical-align: top;"><strong>BUG-02</strong></td>
+      <td style="vertical-align: top;"><strong>BUG-07</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td>
@@ -246,14 +283,14 @@ Execution covered the full set of **118 test cases** defined in the **Test Plan 
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Bug Report: BUG-03
+        Bug Report: BUG-08
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td>
-      <td style="vertical-align: top;"><strong>BUG-03</strong></td>
+      <td style="vertical-align: top;"><strong>BUG-08</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td>
@@ -296,14 +333,14 @@ Execution covered the full set of **118 test cases** defined in the **Test Plan 
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Bug Report: BUG-04
+        Bug Report: BUG-09
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td>
-      <td style="vertical-align: top;"><strong>BUG-04</strong></td>
+      <td style="vertical-align: top;"><strong>BUG-09</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td>
@@ -346,14 +383,14 @@ Execution covered the full set of **118 test cases** defined in the **Test Plan 
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
       <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Bug Report: BUG-05
+        Bug Report: BUG-10
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Bug ID</td>
-      <td style="vertical-align: top;"><strong>BUG-05</strong></td>
+      <td style="vertical-align: top;"><strong>BUG-10</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Linked Test Case ID</td>

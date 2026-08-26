@@ -5,7 +5,7 @@
     Group ID: 03
     Group Name: AmeThyst
     Assignment: PA5-2026
-    Version: 1.6
+    Version: 1.8
 
 Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 
@@ -21,6 +21,8 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 | 16/08/2026 | 1.4 | Update more test cases for Create Study Group | Nguyễn Lê Hoàng Khải |
 | 21/08/2026 | 1.5 | Test Case Description for AI Recommendation | Trần Lê Hoàng Gia |
 | 21/08/2026 | 1.6 | Combine all and Edit | Vũ Duy Nhất |
+| 23/08/2026 | 1.7 | Expand Register/Email Verification/Resend Verification/Google OAuth to 10 test cases each | Phan Lê Anh Minh |
+| 26/08/2026 | 1.8 | Add Spec Kit / Review / Adjustment traceability fields to all test cases | Vũ Duy Nhất |
 
 
 ## Table of Contents
@@ -42,812 +44,656 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 ## I. Register
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Secure successful registration
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-REG-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify hashing, pending persistence, verification delivery, and the generic registration response.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid username, unused email, and valid plaintext password</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Mock no existing user or active pending registration.</li>
-          <li>Call registerUser with valid details.</li>
-          <li>Inspect hashing, persistence, transaction order, mailer call, and response.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The password is hashed and plaintext is not persisted; pending data is stored; verification mail is sent; a generic confirmation is returned.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Secure successful registration</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-REG-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Secure successful registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid unused email, username, and plaintext password.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Call registerUser ; inspect hashing, pending persistence, transaction-before-mail order, mail arguments, and response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Password is hashed, plaintext is not persisted, pending data is committed, verification mail is sent, and the generic confirmation is returned.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Exact-boundary pending expiration
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-REG-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify a pending registration expiring exactly at the current time is treated as expired.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Pending record with expired_at equal to the current time</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Freeze time at the pending record's expired_at value.</li>
-          <li>Call registerUser for the same email.</li>
-          <li>Inspect pending-record cleanup and continuation.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The boundary record is deleted as expired and does not block the new registration.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Exact pending-expiration boundary</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-REG-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Exact pending-expiration boundary.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Pending row whose expired_at equals the frozen current time.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Freeze time; call registerUser ; inspect deletion and continuation.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The row is expired at equality, is deleted, and does not block a fresh registration.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: equality was accepted as active. Revised: equality is expired.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Aligns with the current now &gt;= expired_at lifecycle and avoids accepting a zero-lifetime record.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Initial verification-delivery consistency
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-REG-003</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify failed initial email delivery does not leave unusable committed pending data.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid registration data; verification mailer rejects</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Allow registration database operations to succeed.</li>
-          <li>Make verification email delivery fail.</li>
-          <li>Inspect the final pending-registration state.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Failed delivery does not leave newly committed pending registration data.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Initial mail-delivery consistency</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-REG-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Initial mail-delivery consistency.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid registration; mailer rejects after pending persistence.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Model persisted pending state; invoke the service; reject delivery; inspect final state.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The typed delivery error is returned and no newly committed unusable pending registration remains.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Controller success mapping
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CTL-REG-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify the controller delegates registration fields and maps success to HTTP 201.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid registration request body</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Invoke the registration controller.</li>
-          <li>Inspect the arguments passed to the service.</li>
-          <li>Inspect response status and body.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The service receives the body fields and the controller returns HTTP 201 with the generic confirmation.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Controller success mapping</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-REG-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Controller success mapping.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid request body and successful service result.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke register ; inspect service arguments, status, and body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The controller delegates all fields and returns HTTP 201 with the generic confirmation.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Controller anti-enumeration mapping
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CTL-REG-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify an existing account is not exposed through a distinct controller response.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Existing email; service returns generic confirmation</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Submit registration for the existing email.</li>
-          <li>Inspect the response status and body.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The controller returns HTTP 201 with the same generic confirmation and does not expose account existence.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Controller anti-email-enumeration mapping</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-REG-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Controller anti-email-enumeration mapping.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Existing email hidden by the service's generic result.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke the controller and inspect status/body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 201 and the same generic message are returned; account existence is not disclosed.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: duplicate email produced a distinct conflict response. Revised: duplicate and unused emails share the generic 201 response.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Enforces the approved anti-email-enumeration requirement.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Registration API success
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-INT-REG-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify successful registration through the HTTP route.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid unused email and registration fields</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>POST a valid registration request.</li>
-          <li>Inspect the status and response body.</li>
-          <li>Verify the mailer invocation.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The API returns HTTP 201 with the generic confirmation and sends a verification email.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Registration API success</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Registration API success.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid unused registration body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST /auth/register ; inspect status/body, transaction, and mail call.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 201 returns the generic confirmation after pending persistence and delivery request.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Registration API existing-user privacy
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-INT-REG-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify the API hides whether the submitted email already belongs to a user.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Registration request using an existing user email</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>POST the registration request.</li>
-          <li>Inspect the status and body.</li>
-          <li>Inspect mailer calls.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The API returns HTTP 201 with the same generic confirmation and does not call the mailer.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Existing-user privacy at the API</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Existing-user privacy at the API.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid body using an existing user's email.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST registration; inspect response and mailer calls.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 201 returns the generic confirmation and no email is sent.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: duplicate email produced HTTP 409. Revised: it produces the same generic HTTP 201 response.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Prevents email-address enumeration through the HTTP contract.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Active pending-registration handling</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Active pending-registration handling.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid request for an email with an unexpired pending row.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST registration; inspect response, database connection, and mailer.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 201 returns the generic message without replacing the active row or sending another message.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; this is a newly added boundary scenario.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Registration request validation</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-004</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Registration request validation.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Malformed email, weak password, and empty username.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST the invalid body; inspect validation response and side effects.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 returns VALIDATION_ERROR ; no persistence, hashing, or mail occurs.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; this is a newly added validation scenario.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Retry after failed initial delivery</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-005</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Retry after failed initial delivery.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">First mail attempt rejects; immediate retry uses the same valid body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Model committed pending state; POST twice; inspect both responses, delivery count, and token replacement.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">First request returns 502; retry creates a fresh pending token and performs a second delivery attempt instead of being blocked by stale state.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A</td></tr>
+</tbody></table>
+
+
 
 ## II. Google OAuth
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: First-time Google provisioning
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CFG-GA-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify first-time provisioning, profile mapping, and avatar fallback.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Google profile with email, name, and photo; repeat without photo</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Return no existing user.</li>
-          <li>Invoke the callback with a photo and inspect insertion.</li>
-          <li>Repeat without a photo.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">A user is created with mapped profile data; avatar uses the photo URL when present and null otherwise.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: First-time provisioning with avatar</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">First-time provisioning with avatar.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Verified Google email, display name, and photo.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Return no user; invoke verify callback; inspect lookup, insert mapping, and done .</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">A GOOGLE_AUTH user with default user role and supplied avatar is returned.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; the compound case was narrowed.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Returning user and account collision
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CFG-GA-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify returning Google users are reused and password-account collisions are refused safely.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Existing GOOGLE_AUTH user; existing password-based user</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Invoke the callback for the Google user.</li>
-          <li>Verify no insertion occurs.</li>
-          <li>Invoke it for the password-account collision.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The existing Google user is returned; the password-account collision is refused without sensitive disclosure.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Returning Google user</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Returning Google user.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Existing user with password_hash = GOOGLE_AUTH .</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke callback; inspect query count, absence of insert, and done .</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Existing user is returned without duplicate insertion.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; the compound case was narrowed.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: OAuth controller session redirect
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CTL-GA-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify the callback creates session/cookies and redirects without a query token.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Authenticated Google user</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Invoke the Google callback controller.</li>
-          <li>Inspect session creation and cookies.</li>
-          <li>Inspect the redirect URL.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The controller redirects to CLIENT_URL/auth/callback using session authentication and no query token.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: First-time provisioning without avatar</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">First-time provisioning without avatar.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Verified email and display name with no photos.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Return no user; invoke callback; inspect insertion and done .</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">A GOOGLE_AUTH user is inserted with avatar = null .</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No — split from the first Feature 022 compound provisioning case.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; only executable independence changed.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: OAuth redirect data protection
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CTL-GA-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify credential-related fields never appear in the redirect URL.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">User object containing internal authentication fields</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Invoke the Google callback controller.</li>
-          <li>Inspect the complete redirect URL.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The URL contains neither password_hash nor GOOGLE_AUTH.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Password-account collision</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-004</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Password-account collision.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Existing user with bcrypt password hash.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke callback; inspect query count and refusal result.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Authentication is refused with account_exists_with_password and no insert occurs.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No — split from the second Feature 022 compound Google-user case.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; only executable independence changed.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: OAuth initiation API redirect
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-INT-GA-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify the OAuth initiation endpoint redirects to Google.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">GET /auth/google</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Send the GET request.</li>
-          <li>Inspect the status and Location header.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 302 redirects to the Google OAuth authorization endpoint.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Verified-email requirement</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-005</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verified-email requirement.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Profile containing only an explicitly unverified email.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke callback; inspect database calls and refusal result.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Authentication is refused with verified_email_required before any database query.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; this is a newly added security scenario.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: OAuth callback API redirect
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-INT-GA-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify a successful callback creates a session and redirects without exposing a token.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Successful authenticated callback</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Request the OAuth callback endpoint.</li>
-          <li>Verify that <code>createAuthSession</code> is called and inspect the redirect URL.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;"><code>createAuthSession</code> is called, and HTTP 302 redirects to CLIENT_URL/auth/callback without <code>token=</code> in the URL. This test does not assert <code>setAuthCookies</code>.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: OAuth controller session redirect</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-GA-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">OAuth controller session redirect.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Authenticated Google user.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke callback handler; inspect session, cookies, redirect, and next .</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Session cookies are set and redirect targets CLIENT_URL/auth/callback without a query token.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: controller signed a JWT and placed token/user in the URL. Revised: it creates a cookie session and uses a clean callback URL.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Prevents sensitive query-string exposure and aligns with session authentication.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: OAuth redirect sensitive-data protection</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-GA-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">OAuth redirect sensitive-data protection.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">User object containing internal authentication fields.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke callback; inspect complete redirect URL.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">URL contains neither password_hash nor GOOGLE_AUTH .</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: OAuth initiation redirect</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-GA-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">OAuth initiation redirect.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">GET /auth/google .</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Send request; inspect status and Location.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 302 redirects to Google's authorization endpoint.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Successful OAuth callback</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-GA-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Successful OAuth callback.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Successful mocked Passport callback.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">GET callback; inspect session call and Location.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 302 redirects to the clean client callback and a session is created; no token is in the URL.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: callback redirected with JWT and serialized user query parameters. Revised: callback creates a cookie session and redirects without credentials.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Aligns with the secure session-based callback contract.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Refused OAuth callback redirect</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-GA-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Refused OAuth callback redirect.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Google OAuth.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Passport refusal for a password-account collision.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">GET callback; inspect redirect and session calls.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 302 redirects to client login and no session is created.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; this is a newly added failure-path scenario.</td></tr>
+</tbody></table>
 
 ## III. Resend Verification
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Successful verification resend
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-RV-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify token and TTL refresh, password-hash and username reuse, email delivery, and generic response.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Email with an existing pending registration</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Call the resend service.</li>
-          <li>Inspect refreshed token and TTL.</li>
-          <li>Inspect the reused password hash and username, mailer call, and response.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Token and TTL are refreshed, the existing password hash and username are reused, mail is sent, and a generic confirmation is returned.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Successful resend</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-RV-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Successful resend.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Existing pending registration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Call service; inspect reused credentials, new token/TTL, ordering, mail, and response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">A new token and later TTL commit, existing hash/name are reused, mail is sent, and the generic response returns.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: No-pending anti-enumeration
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-RV-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify absence of a pending registration is hidden.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Email with no pending registration</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Call the resend service.</li>
-          <li>Inspect persistence and mailer calls.</li>
-          <li>Inspect the response.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The generic confirmation is returned with no replacement or email side effect.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: No-pending anti-enumeration</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-RV-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">No-pending anti-enumeration.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Email with no pending row.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Call service; inspect response and side effects.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The same generic response returns without replacement or mail.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: absence produced a distinct error. Revised: absence returns the generic confirmation.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Enforces anti-email-enumeration for pending registrations.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Failed resend-delivery consistency
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-RV-003</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify the previous token remains usable if replacement email delivery fails.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Existing pending token; replacement mailer rejects</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Call the resend service for an existing pending registration.</li>
-          <li>Configure the mailer to reject the replacement verification email.</li>
-          <li>Verify that the previous token and TTL remain usable after the rejection, whether through delayed commit, rollback, or restoration.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The previous token and TTL remain unchanged and usable.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Service-level pre-delivery consistency</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-RV-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Service-level pre-delivery consistency.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Active old token/TTL; replacement mail rejects.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Model real replacement/restoration semantics; capture stored state when mail delivery starts; inspect final state after rejection.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The old token/TTL remain committed until delivery succeeds and remain unchanged after failure.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: restoring the old token after delivery failure was sufficient. Revised: the old token/TTL must remain committed until replacement delivery succeeds.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Post-failure compensation leaves an observable invalid-token window; the transaction-consistency requirement promises continued usability, not only eventual restoration.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Controller normal and missing-email responses
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CTL-RV-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify generic success passthrough and missing-email validation.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid email; request without email</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Submit a valid request.</li>
-          <li>Submit a request without email.</li>
-          <li>Inspect both responses.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The valid request returns HTTP 200 with the generic body; missing email returns HTTP 400 with Email is required.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Controller successful response</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-RV-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Controller successful response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid email and successful generic service result.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke controller; inspect delegation, status, and body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 200 returns the generic confirmation.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; the compound case was narrowed to one scenario.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Controller infrastructure privacy
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CTL-RV-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify unexpected resend-service failures are not exposed.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid request; service throws</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Invoke the resend controller.</li>
-          <li>Make the service throw.</li>
-          <li>Inspect the response.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The controller returns HTTP 200 with the generic confirmation and no infrastructure details.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Unexpected-infrastructure privacy</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-RV-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Unexpected-infrastructure privacy.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid request; untyped service exception.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke controller; make service throw; inspect response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 200 returns the generic response without infrastructure details.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: unexpected failure returned HTTP 500 with error details. Revised: untyped failures return the generic HTTP 200 response.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Preserves the approved privacy contract; typed delivery failure remains separately mapped to HTTP 502.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Resend API success
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-INT-RV-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify successful resend through the HTTP route.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Email with a pending registration</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>POST the resend request.</li>
-          <li>Inspect transaction completion, mailer invocation, status, and body.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Replacement data commits, the mailer is called, and HTTP 200 returns the generic confirmation.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Missing-email validation</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-RV-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Missing-email validation.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Request body without email.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke controller; inspect service calls and response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 returns Email is required and service is not called.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No — split from a Feature 022 compound case.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; only executable independence changed.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Resend API no-pending privacy
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-INT-RV-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify the route hides absence of a pending registration.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Email with no pending registration</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>POST the resend request.</li>
-          <li>Inspect status, body, and mailer calls.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 200 returns the same generic confirmation and the mailer is not called.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Resend API success</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-RV-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Resend API success.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Pending registration email.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST resend; inspect inserted values, transaction, mail call, status, and body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Replacement data commits, mail is requested, and HTTP 200 returns the generic response.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: No-pending privacy at the API</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-RV-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">No-pending privacy at the API.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid email without pending row.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST resend; inspect response and mail calls.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 200 returns the generic confirmation and no email is sent.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: no row returned HTTP 400. Revised: it returns generic HTTP 200.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Prevents enumeration of pending registrations.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: HTTP-level pre-delivery state consistency</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-RV-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">HTTP-level pre-delivery state consistency.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Active old token/TTL and a mailer that rejects.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST resend with stateful database mocks; capture persisted state at the mail boundary and after the 502 response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The old token/TTL remain committed throughout; the request returns 502 and final state is unchanged.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Old token remains verifiable during a failed resend</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-RV-004</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Old token remains verifiable during a failed resend.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Resend Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Active old token; replacement delivery held pending and then rejected.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Start resend; while mail is unresolved, POST old token to verification; reject mail; inspect both responses and restored state.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The old token verifies successfully while resend is pending; resend returns 502 and restores/retains the old state.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A</td></tr>
+</tbody></table>
+
+
 
 ## IV. Verify Email
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Promote pending user safely
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-VE-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify successful pending-user promotion, cleanup, and safe service payload.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid unexpired token for an unregistered pending email</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Call the verification service.</li>
-          <li>Inspect user insertion and pending deletion.</li>
-          <li>Inspect the returned object.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The user is promoted, the pending record is deleted, and a safe { user, userRow } payload is returned without password_hash or a JWT response field.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Successful pending-user promotion</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-VE-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Successful pending-user promotion.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid unexpired token for an unregistered pending email.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Call verifyEmail ; inspect insertion, token deletion, and payload.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Promotion and deletion occur atomically; the safe { user, userRow } result contains no password hash or JWT field.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: service returned a signed JWT with the user. Revised: service returns user data for controller-managed cookie-session creation and no JWT response field.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Aligns with the approved session-based authentication design and protects bearer credentials.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Exact-boundary token expiration
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-VE-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify a token expiring exactly at the current time is rejected.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Pending token with expired_at equal to the current time</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Freeze time at the token's expired_at value.</li>
-          <li>Call the verification service.</li>
-          <li>Inspect whether user promotion occurs.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The token is expired; verification is rejected and no user is promoted.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Exact verification-token expiration boundary</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-VE-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Exact verification-token expiration boundary.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Token whose expired_at equals current time.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Freeze time; verify; inspect cleanup and promotion calls.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Verification is rejected, the expired row is deleted, and no user is promoted.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: equality remained valid. Revised: equality is expired.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Aligns boundary semantics with now &gt;= expired_at and the approved TTL interpretation.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Duplicate email during verification
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-SRV-VE-003</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify cleanup when the pending email was registered before token use.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid pending token whose email now exists in users</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Call the verification service.</li>
-          <li>Return an existing registered user for the email.</li>
-          <li>Inspect cleanup and the thrown error.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The pending token is deleted, the service throws Email already exists., and no duplicate user is created.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Duplicate email during verification</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-SRV-VE-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Duplicate email during verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid pending token whose email now exists in users.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Call service; return an existing user; inspect cleanup and insertion calls.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The pending token is deleted, Email already exists. is thrown, and no duplicate user is inserted.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Controller session response
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CTL-VE-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify successful verification creates a session and safe HTTP body.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid token; service returns verified user</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Invoke the verification controller.</li>
-          <li>Inspect session creation and cookies.</li>
-          <li>Inspect the HTTP response body.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The controller returns HTTP 200 with { user: session.user }, creates session/cookies, and exposes no token field.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Controller session mapping</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-VE-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Controller session mapping.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid token and verified user result.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke handler; inspect session creation, cookies, status, and body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 200 returns only { user: session.user } after session cookies are set.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: response exposed a JWT. Revised: protected cookies carry the session and the body contains only the user.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Session-based authentication replaced browser-readable bearer-token responses.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Controller missing and expired mappings
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-CTL-VE-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify missing and expired tokens map to correct HTTP responses.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Request without token; expired-token service error</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>Invoke the controller without a token.</li>
-          <li>Invoke it again with an expired-token error.</li>
-          <li>Compare the response statuses.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">A missing token returns HTTP 400 and an expired token returns HTTP 410.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Missing-token controller response</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-VE-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Missing-token controller response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Request body without token.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke handler; inspect service calls, status, and body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 returns Verification token is required and the service is not called.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; the compound case was narrowed to one scenario.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Verification API success
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-INT-VE-001</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify successful email verification through the HTTP route.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid unexpired verification token</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>POST the token to the verification endpoint.</li>
-          <li>Inspect the HTTP status and response body, and verify that <code>createAuthSession</code> is called.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The API calls <code>createAuthSession</code> and returns HTTP 200 with { user } and no JWT/token field in the body. This test does not assert <code>setAuthCookies</code>.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Expired-token controller response</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-VE-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Expired-token controller response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Service expiration error.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Invoke handler with a token; make service reject as expired; inspect response.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 410 returns the expiration message.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No — split from a Feature 022 compound case.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; only executable independence changed.</td></tr>
+</tbody></table>
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
-  <thead>
-    <tr style="background-color: #1e3a8a; color: #ffffff;">
-      <th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">
-        Test Case: Verification API missing token
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
-      <td style="vertical-align: top;"><strong>TC-INT-VE-002</strong></td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verify the API returns the controller's missing-token error response.</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Verification request without token</td></tr>
-    <tr>
-      <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td>
-      <td style="vertical-align: top;">
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.6;">
-          <li>POST the request without a token.</li>
-          <li>Inspect the HTTP status and exact response body.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">The API returns HTTP 400 with <code>{ error: 'Verification token is required' }</code>.</td></tr>
-  </tbody>
-</table>
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Verification API success</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-VE-001</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Verification API success.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Valid unexpired token and pending row.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST verification; inspect transaction, session creation, status, and body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 200 returns the session user without a token field and promotion commits.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">Original: API returned { token, user } . Revised: API creates a protected-cookie session and returns { user } only.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">Aligns the expected result with the approved session architecture and prevents token exposure.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Missing-token API request</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-VE-002</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Missing-token API request.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Empty JSON body.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST verification; inspect status/body and session calls.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 returns the required-token error and no session is created.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Non-existent token rejection</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-VE-003</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Non-existent token rejection.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Unknown token.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">POST token with no matching row; inspect status/body and session calls.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 returns Invalid or expired verification link. ; no session is created.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; this is a newly added negative scenario.</td></tr>
+</tbody></table>
+
+<table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
+<thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Successful token cannot be reused</th></tr></thead>
+<tbody>
+<tr><td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-VE-004</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Description</td><td style="vertical-align: top;">Successful token cannot be reused.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td><td style="vertical-align: top;">Email Verification.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Same valid token submitted twice.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;">Model deletion on first promotion; POST twice; inspect statuses and session count.</td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">First request succeeds; second returns HTTP 400; exactly one session is created.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td><td style="vertical-align: top;">No.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td><td style="vertical-align: top;">Yes.</td></tr>
+<tr><td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td><td style="vertical-align: top;">Phan Lê Anh Minh.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td><td style="vertical-align: top;">None.</td></tr>
+<tr><td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td><td style="vertical-align: top;">N/A; this is a newly added replay-prevention scenario.</td></tr>
+</tbody></table>
+
+
 
 ## V. Reserve Book
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
@@ -888,6 +734,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 201 with `{ success: true, data: { reservationId, bookId: "b-001", branchId: 1, branchName: "Main Branch", branchAddress: "123 Main St", shelf, reserveDate, status: "reserved" } }`; UI shows the "Reserved" state.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -930,6 +796,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`available_quantity` decreased from 2 to 1; a `borrow_book` row exists for (`u-001`, `b-001`, branch 1) with status `reserved`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -970,6 +856,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`borrow_num` is now 1 (incremented exactly once).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1012,6 +918,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 with `{ success: false, error: { code: "MISSING_PARAMETERS", message: "bookId and branchId are required" } }`; the reservation service is not invoked.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1052,6 +978,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 with `{ success: false, error: { code: "MISSING_PARAMETERS", message: "bookId and branchId are required" } }`; the reservation service is not invoked.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1094,6 +1040,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "USER_NOT_FOUND", message: "User account not found. Please re-login." }`; `ROLLBACK` executed, `COMMIT` not executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1134,6 +1100,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 `{ code: "UNPAID_DEBT", message: "You have unpaid debts. Please clear all outstanding penalties before reserving a new book." }`; `ROLLBACK` executed.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1176,6 +1162,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 `{ code: "BORROW_LIMIT_EXCEEDED", message: "You have reached the maximum borrow limit of {limit} books" }`; `ROLLBACK` executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1216,6 +1222,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "BOOK_NOT_FOUND", message: "Book not found at the selected branch" }`; `ROLLBACK` executed.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1258,9 +1284,28 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 `{ code: "BOOK_UNAVAILABLE", message: "No available copies at the selected branch" }`; `ROLLBACK` executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
-*(Maps to automated cases TC-SRV-RES-001→017, TC-CTL-RES-001→010, TC-MID-LIB-001→008 in `server/tests/services/library.reserve.service.spec.mjs`, `server/tests/controllers/library.reserve.controller.spec.mjs`, `server/tests/middlewares/library.reserve.middleware.spec.mjs`.)*
 
 
 ## VI. Verify PIN
@@ -1303,6 +1348,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">PIN matches `/^\d{6}$/`; `borrow_book.status` = `pending`; `expiresAt` is a `Date` approximately 180,000 ms (3 minutes) after `Date.now()`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1343,6 +1408,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">The same PIN (`111111`) and its remaining expiry are returned; no `UPDATE` writing a new PIN is executed (only 2 queries total).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1385,6 +1470,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "RESERVATION_NOT_FOUND", message: "Reservation not found or invalid status" }`; only the initial lookup query is executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1425,6 +1530,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 500 `{ code: "PIN_GENERATION_FAILED", message: "Failed to generate unique PIN after 3 attempts" }` (no uncaught exception).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1467,6 +1592,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">The `connection lost` error is rethrown (surfaces to the error-handling layer) and is not retried 3 times.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1507,6 +1652,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`{ success: true, data: { pin: "123456", expiresAt } }`; no 4xx status returned.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1549,6 +1714,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 with `{ success: false, error: { code: "RESERVATION_NOT_FOUND", message: "Reservation not found or invalid status" } }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1589,6 +1774,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1631,6 +1836,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 500 `{ success: false, error: { code: "INTERNAL_ERROR", message: "An unexpected error occurred" } }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1672,10 +1897,28 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Cleanup returns `true`; the row now has `pin = NULL`, `expired_at = NULL`, `status = 'reserved'`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
-*(Maps to automated cases TC-SRV-PIN-US-001→005 and TC-SRV-PIN-US-011→012 in `server/tests/services/dashboard.user.pin.service.spec.mjs`, TC-CTL-PIN-US-001→006 in `server/tests/controllers/dashboard.user.pin.controller.spec.mjs`.)*
-
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
@@ -1714,6 +1957,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns the record containing `borrow_id`, `user_id`, `book_id`, `status`, plus user and book metadata.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1756,6 +2019,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns `null`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1796,6 +2079,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns `{ borrowId, borrower: { username, gender, phone_number, email }, book: { title, author, publisher, genre, price } }`; controller responds `success: true` with message "PIN verified successfully".</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1838,6 +2141,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "PIN_NOT_FOUND", message: "The PIN has expired or does not exist." }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1878,6 +2201,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 403 `{ code: "WRONG_BRANCH", message: "You have arrived at the wrong book borrowing branch." }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1920,6 +2263,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400; the verification service is not called.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1960,6 +2323,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`{ borrowId, status: "borrowed", due_date }`; `COMMIT` executed; the SQL sets `due_date = NOW() + INTERVAL '14 days'`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2002,6 +2385,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "NOT_FOUND", message: "Borrow record not found." }`; `ROLLBACK` executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2042,6 +2445,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 409 `{ code: "USER_INELIGIBLE", message: "Borrower has overdue books or is suspended. Cannot confirm borrowing." }`; `ROLLBACK` executed.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2084,9 +2507,28 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400; the confirmation service is not called.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
-*(Maps to automated cases TC-SRV-PIN-LIB-001→013 in `server/tests/services/dashboard.librarian.pin.service.spec.mjs`, TC-CTL-PIN-LIB-001→008 in `server/tests/controllers/dashboard.librarian.pin.controller.spec.mjs`.)*
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
@@ -2125,6 +2567,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">PIN matches `/^\d{6}$/`; `borrow_book.status` = `pending_return`; the update query uses `[pin, expiresAt, borrow_id]`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2167,6 +2629,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "BORROW_NOT_FOUND", message: "Borrow record not found or book is not currently borrowed" }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2207,6 +2689,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 500 `{ error: { code: "INTERNAL_ERROR", message: "db down" }, statusCode: 500 }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2249,6 +2751,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Cleanup returns `true`; the SQL sets `pin = NULL, expired_at = NULL, status = 'borrowed'` for `[borrow_id, user_id]`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2289,6 +2811,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns `false`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2331,6 +2873,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400; the return-PIN service is not called.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2371,6 +2933,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`{ success: true, data: { pin: "654321", expiresAt }, message: "Return PIN generated successfully" }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2413,6 +2995,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 with `{ success: false, data: null, message: "Borrow record not found or book is not currently borrowed" }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2453,6 +3055,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`{ success: true, cleaned: true }`; the service was called with `("u-001", "bb-001")`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2495,9 +3117,28 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 500 (internal error).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
-*(Maps to automated cases TC-SRV-PIN-US-006→010 in `server/tests/services/dashboard.user.pin.service.spec.mjs`, TC-CTL-PIN-US-007→011 in `server/tests/controllers/dashboard.user.pin.controller.spec.mjs`.)*
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
@@ -2536,6 +3177,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns `{ borrowId, borrower, book, borrowing: { reserve_date, borrow_date, due_date } }`; the query matches `bb.pin = $1 AND bb.expired_at > NOW()`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2578,6 +3239,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "PIN_NOT_FOUND", message: "The PIN has expired or does not exist." }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2618,6 +3299,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`COMMIT` executed; `return_book` row inserted; `available_quantity` incremented by 1; `borrow_num` decremented via `GREATEST(borrow_num - 1, 0)`; returns `{ success: true, data: { returnId, penaltyId: null, penaltyAmount: 0, issue: null, inventoryUpdated: true } }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2660,6 +3361,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "NOT_FOUND", message: "Borrow record not found or not in pending_return status" }`; `ROLLBACK` executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2700,6 +3421,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">A `book_penalty` row is inserted; returns `{ success: true, data: { returnId: null, penaltyId: null, penaltyAmount: 100, issue: "lost", inventoryUpdated: false } }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2742,6 +3483,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`penaltyAmount = 6`, `issue = "damaged"`, `inventoryUpdated = true`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2782,6 +3543,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`issue = "overdue"` and `penaltyAmount > 0`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2824,6 +3605,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">The SQL `UPDATE public.borrow_book SET pin = NULL, expired_at = NULL` is executed for `[borrow_id]`, so the PIN cannot be reused.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2864,6 +3665,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`ROLLBACK` executed, `client.release()` called exactly once, and the error `transaction failed` propagates.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2906,11 +3727,31 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400; the confirm-return service is not called.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Nhựt Huy</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
+
 ## VII. Create Study Group
 
-**--- API & INTEGRATION LEVEL ---**
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
@@ -2949,6 +3790,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 201.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Add check for createdAt and groupId fields in the response payload.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Frontend requires these fields to display details immediately after creation.</td>
     </tr>
   </tbody>
 </table>
@@ -2991,6 +3852,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 401 with `AUTH_REQUIRED`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 401 with error code 'UNAUTHORIZED_ACCESS'.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Standardize security error codes according to the new global system guidelines.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3031,6 +3912,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 401 with `INVALID_TOKEN`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 401 with a detailed message: 'Token expired or malformed'.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Clarify the token error cause for easier debugging on the client side.</td>
     </tr>
   </tbody>
 </table>
@@ -3073,6 +3974,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 403.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 403 Forbidden and log a security warning.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Security team requires auditing all unauthorized access attempts.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3113,6 +4034,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 400.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 400 Bad Request and explicitly list the invalid field name in the 'details' array.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Helps frontend easily parse the error and display an alert to the user.</td>
     </tr>
   </tbody>
 </table>
@@ -3155,6 +4096,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 400.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 400 with a specific message about the malformed metadata format.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Improve API Developer Experience (DX) with clearer error messages.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3195,6 +4156,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 404 or 409.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Check for an additional 409 Conflict error if the study group name already exists.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Ensure study group names are unique across the system.</td>
     </tr>
   </tbody>
 </table>
@@ -3237,10 +4218,28 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 500.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 500 along with a trace ID (if available).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Facilitates faster system log tracing for internal errors.</td>
+    </tr>
   </tbody>
 </table>
-
-**--- MIDDLEWARE LEVEL ---**
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead><tr style="background-color: #1e3a8a; color: #ffffff;"><th colspan="2" style="text-align: left; padding: 12px; font-size: 16px;">Test Case: Normalize a valid creation request</th></tr></thead>
@@ -3251,6 +4250,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">`availId: "12"` and metadata/requirements containing surrounding spaces and an empty item.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Invoke `validateCreateStudyGroup` with the valid request.</li><li>Inspect the normalized body and middleware continuation.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">`availId` becomes `12`, metadata is trimmed, empty requirements are removed, `next()` is called once, and no error response is sent.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Middleware calls next() and flags request.body with `isNormalized = true`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Makes it easier to track the preprocessing state of the payload.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3263,6 +4282,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">A valid creation request without the `requirements` field.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Remove `requirements` from the valid request.</li><li>Invoke the creation middleware and inspect the request body.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">`requirements` is `[]` and `next()` is called once.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Assign a null value to the requirements array instead of leaving it empty if omitted.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Saves bandwidth and standardizes default values in the database.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3275,6 +4314,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">A valid request containing `createdBy: "another-user"`.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Add `createdBy` to the request body.</li><li>Invoke the middleware and inspect the response.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 with `VALIDATION_ERROR`, `Unsupported request field.`, and `details.fields: ["createdBy"]`; `next()` is not called.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Silently drop the invalid field instead of throwing an error.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Requirement change: apply strict pick mechanism instead of throwing errors.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3287,6 +4346,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Parameterized values: `0`, `-1`, `1.5`, and `"not-a-number"`.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Set each invalid value as `availId`.</li><li>Invoke the middleware and inspect each response.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">Each value returns HTTP 400 with `VALIDATION_ERROR` and `availId must be a positive integer.`; `next()` is not called.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return 422 Unprocessable Entity instead of 400.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Standardize HTTP status codes: use 422 for data logic errors.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3299,6 +4378,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">`startDate: "01/08/2099"`.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Set the slash-formatted date in the request.</li><li>Invoke the middleware and inspect the response.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 with `VALIDATION_ERROR` and `startDate must use YYYY-MM-DD.`; `next()` is not called.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Accept ISO-8601 format instead of only YYYY-MM-DD.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Support multiple time zones for international students.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3311,6 +4410,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td><td style="vertical-align: top;">Six non-empty requirements: `["1", "2", "3", "4", "5", "6"]`.</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Steps</td><td style="vertical-align: top;"><ol style="margin: 0; padding-left: 20px; line-height: 1.6;"><li>Set six requirements in the request.</li><li>Invoke the middleware and inspect the response.</li></ol></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td><td style="vertical-align: top;">HTTP 400 with `VALIDATION_ERROR` and the five-item limit message; `next()` is not called.</td></tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Accept a maximum of 10 requirements instead of 5.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Lecturer feedback requested more conditions for large study groups.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3354,6 +4473,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Controller forwards correct parameters to service.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Controller calls the service with a parameter containing the user's IP.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Required for the newly added rate-limiting feature.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3394,6 +4533,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Socket event is emitted successfully after service completion.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Socket event is emitted with a payload format including the creator's details.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Frontend needs the creator's name to display a more detailed real-time notification.</td>
     </tr>
   </tbody>
 </table>
@@ -3436,6 +4595,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 400 with details.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Log validation errors to controller.log before returning the response.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Audit log requirement from the DevOps team.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3476,6 +4655,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Response status 500.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Send an alert to the monitoring system (e.g., Sentry) before returning 500.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Ensure the operations team is notified immediately.</td>
     </tr>
   </tbody>
 </table>
@@ -3520,6 +4719,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns cleaned up payload.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Trim all special characters (e.g., tabs, newlines) from metadata.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent UI rendering issues when users paste text from Word documents.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3559,6 +4778,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns an array of standard strings.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Coerce requirements to strings and limit each item to 100 characters.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent memory overflow or UI breaking due to excessively long strings.</td>
     </tr>
   </tbody>
 </table>
@@ -3600,6 +4839,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with UNAUTHORIZED (401).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Throw an additional `UserNotFoundError` if the ID does not exist in the DB.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent edge cases where an account is physically deleted but the token remains valid.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3639,6 +4898,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with VALIDATION_ERROR (400).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Add stricter XSS vulnerability checks in the study group description.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Mandatory requirement from the periodic security review.</td>
     </tr>
   </tbody>
 </table>
@@ -3680,6 +4959,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with VALIDATION_ERROR (400).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Change the error message to 'The number of requirements exceeds the allowed limit'.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Update the error message format based on new localization requirements.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3720,6 +5019,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with NOT_FOUND (404).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Return a list of available slots if the availId is invalid.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Improve user friendliness by suggesting options instead of just throwing an error.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3759,6 +5078,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with INVALID_CAPACITY (409).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Verify the validity of the start time (must not be in the past).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent the creation of study groups with invalid historical timestamps.</td>
     </tr>
   </tbody>
 </table>
@@ -3802,6 +5141,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with `SLOT_UNAVAILABLE` (409); `findSlotForCreation` receives availability ID, start date, and transaction client; no persistence insert runs.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Throw `CapacityError` if the expected member count exceeds room capacity.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Integrate with the library's facility management system.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3843,6 +5202,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns group detail successfully.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Call transaction.rollback() explicitly in the catch block.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Ensure data integrity at the code level during unexpected failures.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3882,6 +5261,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with SLOT_UNAVAILABLE (409).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Limit each user to creating a maximum of 3 groups per day.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Prevent spamming of fake study groups.</td>
     </tr>
   </tbody>
 </table>
@@ -3923,6 +5322,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with AUTH_USER_NOT_FOUND (401).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Validate an additional condition ensuring the user is not banned.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Integrate with the library management system's penalty feature.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3963,6 +5382,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Rejects with standard Error instance.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Nguyễn Lê Hoàng Khải</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Save the group creation history into the `audit_logs` table after a successful commit.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Support the user activity history retrieval feature.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -3978,7 +5417,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-001</strong></td>
     </tr>
     <tr>
@@ -4008,6 +5447,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">The first call queries the database once (<code>pool.query</code> count = 1) and returns 15 recommendation items. The second call retrieves the array directly from the in-memory Map cache (<code>pool.query</code> count remains 1). Returned array matching <code>result1 === result2</code>.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4021,7 +5480,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-003</strong></td>
     </tr>
     <tr>
@@ -4049,6 +5508,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Service handles exception internally without crashing or throwing an unhandled rejection. Returns exactly 15 fallback items with default <code>score: 0.0</code> and fallback titles (<code>fallback-book-0</code> through <code>fallback-book-14</code>).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4062,7 +5541,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-004</strong></td>
     </tr>
     <tr>
@@ -4091,6 +5570,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Payload serialized as valid JSON string with trailing newline <code>\n</code>. Service receives and parses response buffer correctly. Recommendations returned sorted in descending order of GCN score (<code>result[0].score === 0.9</code>).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4104,7 +5603,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-005</strong></td>
     </tr>
     <tr>
@@ -4133,6 +5632,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;"><code>session.run</code> is executed exactly twice, successfully triggering the secondary cold-start graph traversal Cypher query. Candidate pool is populated with merged items from both graph passes.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4146,7 +5665,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-006</strong></td>
     </tr>
     <tr>
@@ -4172,7 +5691,27 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
-      <td style="vertical-align: top;">Candidate <code>stock-book-0</code> is completely pruned from recommendation output (<code>result.some(b => b.id === 'stock-book-0') === false</code>). Total returned items maintain quota via supplementation.</td>
+      <td style="vertical-align: top;">Candidate <code>stock-book-0</code> is completely pruned from recommendation output (<code>result.some(b =&gt; b.id === 'stock-book-0') === false</code>). Total returned items maintain quota via supplementation.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Adjusted output assertion to ensure 15 items are maintained via supplementation when out-of-stock items are pruned.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Clarified inventory guardrail replenishment requirement.</td>
     </tr>
   </tbody>
 </table>
@@ -4187,7 +5726,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-007</strong></td>
     </tr>
     <tr>
@@ -4215,6 +5754,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Final score matches exact mathematical formula: 0.90 * (0.65)^2 = 0.90 * 0.4225 = 0.38025. <code>expect(skippedItem.score).toBeCloseTo(0.38025, 4)</code> evaluates to true.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4228,7 +5787,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-008</strong></td>
     </tr>
     <tr>
@@ -4257,6 +5816,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Database is queried for catalog supplementation (<code>supp-book-0</code> through <code>supp-book-13</code>). Returned array length is exactly 15 items.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4270,7 +5849,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-009</strong></td>
     </tr>
     <tr>
@@ -4301,6 +5880,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Click recorded successfully (<code>logged === true</code>). In-memory cache for user is evicted; subsequent lookup triggers DB reload (<code>pool.query</code> count increments). Non-blocking graph edge sync invoked with ISO timestamp.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No — split after baseline.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">Adjusted expected output to check async graph sync non-blocking execution order and ISO timestamp format.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">Isolated graph edge sync integration scenario.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4314,7 +5913,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-010</strong></td>
     </tr>
     <tr>
@@ -4323,7 +5922,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td>
-      <td style="vertical-align: top;">View Recommended Book (UC-AIR-01) & Reset AI Recommend (UC-AIR-02)</td>
+      <td style="vertical-align: top;">View Recommended Book (UC-AIR-01) &amp; Reset AI Recommend (UC-AIR-02)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td>
@@ -4342,6 +5941,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP Response status implicitly set to 200 OK. Response payload contains <code>{ success: true, data: { historyBased: [...], trending: [...] } }</code>.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No — added after baseline.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4355,7 +5974,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-002</strong></td>
     </tr>
     <tr>
@@ -4384,6 +6003,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Cache eviction function succeeds silently. The subsequent <code>getUserRecommendations</code> call experiences a cache miss and queries PostgreSQL (<code>pool.query</code> count increments to 2).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -4397,7 +6036,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </thead>
   <tbody>
     <tr>
-      <td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
+      <td width="24%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td>
       <td style="vertical-align: top;"><strong>TC-SRV-REC-010</strong></td>
     </tr>
     <tr>
@@ -4406,7 +6045,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Related Use Case</td>
-      <td style="vertical-align: top;">View Recommended Book (UC-AIR-01) & Reset AI Recommend (UC-AIR-02)</td>
+      <td style="vertical-align: top;">View Recommended Book (UC-AIR-01) &amp; Reset AI Recommend (UC-AIR-02)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Input Data</td>
@@ -4424,6 +6063,26 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP Response status implicitly set to 200 OK. Response payload contains <code>{ success: true, data: { historyBased: [...], trending: [...] } }</code>.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">No — added after baseline.</td>
+    </tr>
+    <tr> 
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Trần Lê Hoàng Gia.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">N/A.</td>
     </tr>
   </tbody>
 </table>
