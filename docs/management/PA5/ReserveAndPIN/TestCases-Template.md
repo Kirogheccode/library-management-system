@@ -6,7 +6,7 @@
     Group Name: AmeThyst
     Assignment: PA5-2026
 
-Performed by: Nguyễn Nhựt Huy | Reviewed by: [Name] | Edited by: [Name]
+Performed by: Nguyễn Nhựt Huy | Reviewed by: Vũ Duy Nhất | Edited by: Nguyễn Nhựt Huy
 
 ## Table of Contents
 
@@ -49,9 +49,9 @@ Backend controllers, services, and middlewares are verified with automated unit 
 - **Environment**: Local development machine (Windows), backend served at the configured local port, database initialized locally.
 
 ### 4. Test schedule and responsibilities
-- **Test case design & authoring**: [Name]
-- **Test execution (automated + manual)**: [Name]
-- **Test review & sign-off**: [Name]
+- **Test case design & authoring**: Nguyễn Nhựt Huy
+- **Test execution (automated + manual)**: Nguyễn Nhựt Huy
+- **Test review & sign-off**: Vũ Duy Nhất
 
 | Date | Activity |
 | --- | --- |
@@ -114,6 +114,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 201 with `{ success: true, data: { reservationId, bookId: "b-001", branchId: 1, branchName: "Main Branch", branchAddress: "123 Main St", shelf, reserveDate, status: "reserved" } }`; UI shows the "Reserved" state.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -154,6 +174,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`available_quantity` decreased from 2 to 1; a `borrow_book` row exists for (`u-001`, `b-001`, branch 1) with status `reserved`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -196,6 +236,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`borrow_num` is now 1 (incremented exactly once).</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -236,6 +296,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 with `{ success: false, error: { code: "MISSING_PARAMETERS", message: "bookId and branchId are required" } }`; the reservation service is not invoked.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -278,6 +358,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 with `{ success: false, error: { code: "MISSING_PARAMETERS", message: "bookId and branchId are required" } }`; the reservation service is not invoked.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -318,6 +418,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "USER_NOT_FOUND", message: "User account not found. Please re-login." }`; `ROLLBACK` executed, `COMMIT` not executed.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -360,6 +480,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 `{ code: "UNPAID_DEBT", message: "You have unpaid debts. Please clear all outstanding penalties before reserving a new book." }`; `ROLLBACK` executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -400,6 +540,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 `{ code: "BORROW_LIMIT_EXCEEDED", message: "You have reached the maximum borrow limit of {limit} books" }`; `ROLLBACK` executed.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -442,6 +602,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "BOOK_NOT_FOUND", message: "Book not found at the selected branch" }`; `ROLLBACK` executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -482,6 +662,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400 `{ code: "BOOK_UNAVAILABLE", message: "No available copies at the selected branch" }`; `ROLLBACK` executed.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -527,6 +727,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">PIN matches `/^\d{6}$/`; `borrow_book.status` = `pending`; `expiresAt` is a `Date` approximately 180,000 ms (3 minutes) after `Date.now()`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -567,6 +787,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">The same PIN (`111111`) and its remaining expiry are returned; no `UPDATE` writing a new PIN is executed (only 2 queries total).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -609,6 +849,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "RESERVATION_NOT_FOUND", message: "Reservation not found or invalid status" }`; only the initial lookup query is executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -649,6 +909,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 500 `{ code: "PIN_GENERATION_FAILED", message: "Failed to generate unique PIN after 3 attempts" }` (no uncaught exception).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -691,6 +971,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">The `connection lost` error is rethrown (surfaces to the error-handling layer) and is not retried 3 times.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -731,6 +1031,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`{ success: true, data: { pin: "123456", expiresAt } }`; no 4xx status returned.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -773,6 +1093,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 with `{ success: false, error: { code: "RESERVATION_NOT_FOUND", message: "Reservation not found or invalid status" } }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -813,6 +1153,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -855,6 +1215,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 500 `{ success: false, error: { code: "INTERNAL_ERROR", message: "An unexpected error occurred" } }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -895,6 +1275,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Cleanup returns `true`; the row now has `pin = NULL`, `expired_at = NULL`, `status = 'reserved'`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -940,6 +1340,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns the record containing `borrow_id`, `user_id`, `book_id`, `status`, plus user and book metadata.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -980,6 +1400,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns `null`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1022,6 +1462,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns `{ borrowId, borrower: { username, gender, phone_number, email }, book: { title, author, publisher, genre, price } }`; controller responds `success: true` with message "PIN verified successfully".</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1062,6 +1522,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "PIN_NOT_FOUND", message: "The PIN has expired or does not exist." }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1104,6 +1584,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 403 `{ code: "WRONG_BRANCH", message: "You have arrived at the wrong book borrowing branch." }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1144,6 +1644,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400; the verification service is not called.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1186,6 +1706,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`{ borrowId, status: "borrowed", due_date }`; `COMMIT` executed; the SQL sets `due_date = NOW() + INTERVAL '14 days'`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1226,6 +1766,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "NOT_FOUND", message: "Borrow record not found." }`; `ROLLBACK` executed.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1268,6 +1828,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 409 `{ code: "USER_INELIGIBLE", message: "Borrower has overdue books or is suspended. Cannot confirm borrowing." }`; `ROLLBACK` executed.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1308,6 +1888,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400; the confirmation service is not called.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1353,6 +1953,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">PIN matches `/^\d{6}$/`; `borrow_book.status` = `pending_return`; the update query uses `[pin, expiresAt, borrow_id]`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1393,6 +2013,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "BORROW_NOT_FOUND", message: "Borrow record not found or book is not currently borrowed" }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1435,6 +2075,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 500 `{ error: { code: "INTERNAL_ERROR", message: "db down" }, statusCode: 500 }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1475,6 +2135,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Cleanup returns `true`; the SQL sets `pin = NULL, expired_at = NULL, status = 'borrowed'` for `[borrow_id, user_id]`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1517,6 +2197,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns `false`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1557,6 +2257,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400; the return-PIN service is not called.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1599,6 +2319,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`{ success: true, data: { pin: "654321", expiresAt }, message: "Return PIN generated successfully" }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1639,6 +2379,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 with `{ success: false, data: null, message: "Borrow record not found or book is not currently borrowed" }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1681,6 +2441,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`{ success: true, cleaned: true }`; the service was called with `("u-001", "bb-001")`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1721,6 +2501,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 500 (internal error).</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1766,6 +2566,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">Returns `{ borrowId, borrower, book, borrowing: { reserve_date, borrow_date, due_date } }`; the query matches `bb.pin = $1 AND bb.expired_at > NOW()`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1806,6 +2626,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "PIN_NOT_FOUND", message: "The PIN has expired or does not exist." }`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1848,6 +2688,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`COMMIT` executed; `return_book` row inserted; `available_quantity` incremented by 1; `borrow_num` decremented via `GREATEST(borrow_num - 1, 0)`; returns `{ success: true, data: { returnId, penaltyId: null, penaltyAmount: 0, issue: null, inventoryUpdated: true } }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1888,6 +2748,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 404 `{ code: "NOT_FOUND", message: "Borrow record not found or not in pending_return status" }`; `ROLLBACK` executed.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -1930,6 +2810,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">A `book_penalty` row is inserted; returns `{ success: true, data: { returnId: null, penaltyId: null, penaltyAmount: 100, issue: "lost", inventoryUpdated: false } }`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1970,6 +2870,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`penaltyAmount = 6`, `issue = "damaged"`, `inventoryUpdated = true`.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2012,6 +2932,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`issue = "overdue"` and `penaltyAmount > 0`.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2052,6 +2992,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">The SQL `UPDATE public.borrow_book SET pin = NULL, expired_at = NULL` is executed for `[borrow_id]`, so the PIN cannot be reused.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
@@ -2094,6 +3054,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">`ROLLBACK` executed, `client.release()` called exactly once, and the error `transaction failed` propagates.</td>
     </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2134,6 +3114,26 @@ Backend controllers, services, and middlewares are verified with automated unit 
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Expected Output</td>
       <td style="vertical-align: top;">HTTP 400; the confirm-return service is not called.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Spec Kit Created</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed</td>
+      <td style="vertical-align: top;">Yes</td>
+    </tr>
+    <tr>
+      <td style="background-color: #eef2ff; font-weight: bold; vertical-align: top;">Reviewed By</td>
+      <td style="vertical-align: top;">Vũ Duy Nhất</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Expected Result</td>
+      <td style="vertical-align: top;">None.</td>
+    </tr>
+    <tr>
+      <td style="background-color: #fff7ed; font-weight: bold; vertical-align: top;">Adjust Reason</td>
+      <td style="vertical-align: top;">None.</td>
     </tr>
   </tbody>
 </table>
