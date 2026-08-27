@@ -4433,8 +4433,6 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   </tbody>
 </table>
 
-**--- CONTROLLER LEVEL ---**
-
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>
     <tr style="background-color: #1e3a8a; color: #ffffff;">
@@ -4678,8 +4676,6 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
   </tbody>
 </table>
-
-**--- SERVICE LEVEL ---**
 
 <table width="100%" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #d1d5db; margin-bottom: 20px;">
   <thead>

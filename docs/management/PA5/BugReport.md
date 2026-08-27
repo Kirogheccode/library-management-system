@@ -42,9 +42,9 @@ Execution covered the full set of **131 test cases** defined in the **Test Plan 
 | :--- | :--- |
 | Number of features tested | 8 |
 | Total test cases executed | 131 |
-| Passed (initial run) | 124 |
+| Passed (initial run) | 121 |
 | Failed (initial run) | 10 |
-| Pass rate (initial run) | 94.7% |
+| Pass rate (initial run) | 92.4% |
 | Defects logged | 10 (BUG-01→10) |
 | Defects fixed & re-verified | 10 (BUG-01→10) |
 | Defects still open | 0 |
@@ -58,11 +58,11 @@ Execution covered the full set of **131 test cases** defined in the **Test Plan 
 | Google OAuth | 10 | 10 | 0 | — | 2026-08-14 - 2026-08-21 | — |
 | Resend Verification | 10 | 7 | 3 | BUG-03, BUG-04, BUG-05 | 2026-08-14 - 2026-08-21 | Yes |
 | Verify Email | 10 | 10 | 0 | — | 2026-08-14 - 2026-08-21 | — |
-| Reserve Book | 10 | 9 | 1 | BUG-01 | 2026-08-13 – 2026-08-16 | Yes |
-| Verify PIN | 40 | 36 | 4 | BUG-02, BUG-03, BUG-04, BUG-05 | 2026-08-13 – 2026-08-16 | Yes |
-| Create Study Group | 30 | 30 | 0 | — | 2026-08-16 |
-| AI Recommendation | 11 | 11 | 0 | — | 2026-08-21 |
-| **Total** | **118** | **111** | **7** | **10 defects** | **2026-08-13 – 2026-08-21** | **Yes** |
+| Reserve Book | 10 | 9 | 1 | BUG-06 | 2026-08-13 – 2026-08-16 | Yes |
+| Verify PIN | 40 | 36 | 4 | BUG-07, BUG-08, BUG-09, BUG-10 | 2026-08-13 – 2026-08-16 | Yes |
+| Create Study Group | 30 | 30 | 0 | — | 2026-08-16 | — |
+| AI Recommendation | 11 | 11 | 0 | — | 2026-08-21 | — |
+| **Total** | **131** | **121** | **10** | **10 defects** | **2026-08-13 – 2026-08-21** | **Yes** |
 
 ## II. Bug Reports
 

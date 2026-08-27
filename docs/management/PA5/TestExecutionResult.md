@@ -55,7 +55,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-REG-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Password was hashed, pending data was persisted, verification mail was requested, and a generic confirmation was returned.</td></tr>
   </tbody>
 </table>
@@ -74,7 +74,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-REG-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The exact-boundary pending record was treated as expired, deleted, and registration continued.</td></tr>
   </tbody>
 </table>
@@ -93,7 +93,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-REG-003</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-01; re-run Pass)</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Pending data remained committed after the verification mailer failed. (Linked bug: BUG-01)</td></tr>
   </tbody>
 </table>
@@ -112,7 +112,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CTL-REG-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The controller passed request fields to the service and returned HTTP 201 with the generic message.</td></tr>
   </tbody>
 </table>
@@ -131,7 +131,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CTL-REG-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The existing-account flow returned the same generic HTTP 201 response.</td></tr>
   </tbody>
 </table>
@@ -150,7 +150,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-INT-REG-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The API returned HTTP 201 and invoked verification mail delivery.</td></tr>
   </tbody>
 </table>
@@ -169,7 +169,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-INT-REG-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The API returned HTTP 201 and did not invoke the mailer.</td></tr>
   </tbody>
 </table>
@@ -179,7 +179,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-003</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">An active pending registration was hidden behind the generic response and was neither replaced nor re-mailed.</td></tr>
 </tbody></table>
 
@@ -188,7 +188,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-004</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Invalid email/password/username input returned HTTP 400 VALIDATION_ERROR before persistence.</td></tr>
 </tbody></table>
 
@@ -197,7 +197,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-REG-005</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #fee2e2; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-02; re-run Pass)</td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The first request returned 502, but its active pending row blocked the retry; the mailer ran once instead of twice and no fresh token was issued. (Linked bug: BUG-02)</td></tr>
 </tbody></table>
 
@@ -217,7 +217,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CFG-GA-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The first-time user was provisioned with mapped data and a null-avatar fallback.</td></tr>
   </tbody>
 </table>
@@ -236,7 +236,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CFG-GA-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The returning Google user was reused and the password-account collision was refused safely.</td></tr>
   </tbody>
 </table>
@@ -246,7 +246,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-003</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A first-time profile without photos was inserted with a null avatar.</td></tr>
 </tbody></table>
 
@@ -255,7 +255,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-004</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A password-account collision was refused with the expected Passport information result.</td></tr>
 </tbody></table>
 
@@ -264,7 +264,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CFG-GA-005</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A profile without a verified email was refused before database access.</td></tr>
 </tbody></table>
 
@@ -282,7 +282,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CTL-GA-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Session/cookies were created and the redirect contained no query token.</td></tr>
   </tbody>
 </table>
@@ -301,7 +301,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CTL-GA-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The redirect exposed neither password_hash nor GOOGLE_AUTH.</td></tr>
   </tbody>
 </table>
@@ -320,7 +320,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-INT-GA-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">GET /auth/google returned HTTP 302 to Google authorization.</td></tr>
   </tbody>
 </table>
@@ -339,7 +339,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-INT-GA-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The callback returned HTTP 302 to the client callback without token= in the URL.</td></tr>
   </tbody>
 </table>
@@ -349,7 +349,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-GA-003</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A refused authentication redirected to client login and created no session.</td></tr>
 </tbody></table>
 
@@ -369,7 +369,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-RV-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The service refreshed token/TTL, reused the existing password hash and username, called the mailer, and returned a generic response.</td></tr>
   </tbody>
 </table>
@@ -388,7 +388,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-RV-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The no-pending flow returned a generic response without side effects.</td></tr>
   </tbody>
 </table>
@@ -407,7 +407,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-RV-003</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-03; re-run Pass)</td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Replacement token and TTL were committed before failed mail delivery, so the previous values were not preserved. (Linked bug: BUG-03).</td></tr>
   </tbody>
 </table>
@@ -426,7 +426,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CTL-RV-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The valid request returned HTTP 200; missing email returned HTTP 400.</td></tr>
   </tbody>
 </table>
@@ -445,7 +445,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CTL-RV-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The unexpected service error was hidden behind the generic HTTP 200 response.</td></tr>
   </tbody>
 </table>
@@ -455,7 +455,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-RV-003</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A missing email returned HTTP 400 without service invocation.</td></tr>
 </tbody></table>
 
@@ -473,7 +473,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-INT-RV-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The API committed replacement data, called the mailer, and returned HTTP 200.</td></tr>
   </tbody>
 </table>
@@ -492,7 +492,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-INT-RV-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The no-pending API request returned HTTP 200 without calling the mailer.</td></tr>
   </tbody>
 </table>
@@ -502,7 +502,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-RV-003</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #fee2e2; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-04; re-run Pass)</td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The request eventually returned 502 and restored old state, but the persisted token at the delivery boundary was already the undelivered replacement. (Linked bug: BUG-04)</td></tr>
 </tbody></table>
 
@@ -511,7 +511,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-RV-004</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #fee2e2; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Fail</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-05; re-run Pass)</td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">While the replacement delivery was pending and later failed, verification with the previously valid token returned HTTP 400 instead of 200.(Linked bug: BUG-05)</td></tr>
 </tbody></table>
 
@@ -531,7 +531,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-VE-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The pending user was promoted and deleted, and a safe payload was returned.</td></tr>
   </tbody>
 </table>
@@ -550,7 +550,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-VE-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The exact-boundary verification token was rejected as expired, deleted, and no user was promoted.</td></tr>
   </tbody>
 </table>
@@ -569,7 +569,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-SRV-VE-003</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The duplicate email caused pending cleanup and the expected error.</td></tr>
   </tbody>
 </table>
@@ -588,7 +588,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CTL-VE-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The controller created session/cookies and returned HTTP 200 without a token field.</td></tr>
   </tbody>
 </table>
@@ -607,7 +607,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-CTL-VE-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Missing token mapped to HTTP 400 and expired token mapped to HTTP 410.</td></tr>
   </tbody>
 </table>
@@ -617,7 +617,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-CTL-VE-003</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The expiration error mapped independently to HTTP 410.</td></tr>
 </tbody></table>
 
@@ -635,7 +635,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-INT-VE-001</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;"><code>createAuthSession</code> was called, and the API returned HTTP 200 with { user } and no <code>token</code> field. This test did not assert <code>setAuthCookies</code>.</td></tr>
   </tbody>
 </table>
@@ -654,7 +654,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
       <td style="vertical-align: top;"><strong>TC-INT-VE-002</strong></td>
     </tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-14</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The API returned HTTP 400 with <code>{ error: 'Verification token is required' }</code>.</td></tr>
   </tbody>
 </table>
@@ -664,7 +664,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-VE-003</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">A non-existent token returned HTTP 400 and did not create a session.</td></tr>
 </tbody></table>
 
@@ -673,7 +673,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
 <tbody>
 <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-INT-VE-004</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-21</td></tr>
-<tr><td style="background-color: #dcfce7; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+<tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
 <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The first verification succeeded; reuse of the consumed token returned HTTP 400 and no second session was created.</td></tr>
 </tbody></table>
 
@@ -697,7 +697,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -725,7 +725,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -753,7 +753,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -781,7 +781,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -809,7 +809,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -837,7 +837,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -865,7 +865,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -893,7 +893,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-06; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-06; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -921,7 +921,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -949,7 +949,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -980,7 +980,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1008,7 +1008,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1036,7 +1036,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1064,7 +1064,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-07; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-07; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1092,7 +1092,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1120,7 +1120,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1148,7 +1148,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1176,7 +1176,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1204,7 +1204,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1232,7 +1232,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1260,7 +1260,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1288,7 +1288,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1316,7 +1316,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1344,7 +1344,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1372,7 +1372,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-08; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-08; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1400,7 +1400,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1428,7 +1428,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1456,7 +1456,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1484,7 +1484,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1512,7 +1512,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1540,7 +1540,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1568,7 +1568,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1596,7 +1596,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1624,7 +1624,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1652,7 +1652,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1680,7 +1680,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1708,7 +1708,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1736,7 +1736,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1764,7 +1764,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1792,7 +1792,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1820,7 +1820,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1848,7 +1848,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1876,7 +1876,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1904,7 +1904,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1932,7 +1932,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-09; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-09; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1960,7 +1960,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -1988,7 +1988,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2016,7 +2016,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Fail</strong> (fixed — see BUG-10; re-run Pass)</td>
+      <td style="vertical-align: top;"><strong style="color: #dc2626;">Fail</strong> (fixed — see BUG-10; re-run Pass)</td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2044,7 +2044,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2072,7 +2072,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2102,7 +2102,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2130,7 +2130,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2158,7 +2158,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2186,7 +2186,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2214,7 +2214,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2242,7 +2242,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2270,7 +2270,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2298,7 +2298,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2312,7 +2312,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   <tbody>
     <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-MID-CSG-001</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-16</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The request body was normalized exactly as expected, `next()` ran once, and no error response was sent.</td></tr>
   </tbody>
 </table>
@@ -2322,7 +2322,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   <tbody>
     <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-MID-CSG-002</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-16</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The omitted `requirements` field became an empty array and `next()` ran once.</td></tr>
   </tbody>
 </table>
@@ -2332,7 +2332,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   <tbody>
     <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-MID-CSG-003</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-16</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The middleware returned the expected 400 error naming `createdBy` and did not call `next()`.</td></tr>
   </tbody>
 </table>
@@ -2342,7 +2342,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   <tbody>
     <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-MID-CSG-004</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-16</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">All four invalid `availId` values returned the expected 400 validation error without calling `next()`.</td></tr>
   </tbody>
 </table>
@@ -2352,7 +2352,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   <tbody>
     <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-MID-CSG-005</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-16</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">The slash-formatted date returned the expected `YYYY-MM-DD` validation error and did not call `next()`.</td></tr>
   </tbody>
 </table>
@@ -2362,7 +2362,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
   <tbody>
     <tr><td width="22%" style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Test Case ID</td><td style="vertical-align: top;"><strong>TC-MID-CSG-006</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Execution Date</td><td style="vertical-align: top;">2026-08-16</td></tr>
-    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong>Pass</strong></td></tr>
+    <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td><td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td></tr>
     <tr><td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td><td style="vertical-align: top;">Six non-empty requirements returned the expected five-item-limit error and did not call `next()`.</td></tr>
   </tbody>
 </table>
@@ -2386,7 +2386,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2414,7 +2414,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2442,7 +2442,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2470,7 +2470,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2498,7 +2498,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2526,7 +2526,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2554,7 +2554,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2582,7 +2582,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2610,7 +2610,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2638,7 +2638,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2666,7 +2666,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2694,7 +2694,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2722,7 +2722,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2750,7 +2750,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2778,7 +2778,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
@@ -2806,7 +2806,7 @@ Performed by: All Members | Reviewed by: All Members | Edited by: Vũ Duy Nhất
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Status</td>
-      <td style="vertical-align: top;"><strong>Pass</strong></td>
+      <td style="vertical-align: top;"><strong style="color: #16a34a;">Pass</strong></td>
     </tr>
     <tr>
       <td style="background-color: #f8fafc; font-weight: bold; vertical-align: top;">Actual Result</td>
